@@ -15,7 +15,6 @@ def translate(phrase):
 previous = ''
 
 while True:
-    clipboard = get_clipboard()
-    if clipboard != previous:
+    if (clipboard := get_clipboard()) != previous:
         previous = clipboard
         pyperclip.copy(translate(clipboard).text)
