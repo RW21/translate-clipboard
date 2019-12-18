@@ -1,6 +1,5 @@
 from googletrans import Translator
 import pyperclip
-import json
 
 translator = Translator()
 
@@ -13,9 +12,10 @@ def translate(phrase):
     return translator.translate(phrase, dest='ja')
 
 
-previous = get_clipboard()
+previous = ''
 
 while True:
-    if (clipboard := get_clipboard()) != previous:
-        print(clipboard)
+    clipboard = get_clipboard()
+    if clipboard != previous:
+        previous = clipboard
         pyperclip.copy(translate(clipboard).text)
